@@ -38,6 +38,11 @@ const chartIt = async () => {
       scales: {
         y: {
           beginAtZero: false,
+          ticks: {
+            callback: function (value, index, values) {
+              return value + "°";
+            },
+          },
         },
       },
     },
