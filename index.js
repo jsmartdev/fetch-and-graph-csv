@@ -1,32 +1,33 @@
-const xlabels = [];
-const ytemps = [];
-
 const getData = async () => {
+  const xs = [];
+  const ys = [];
   const response = await fetch("data/data.csv");
   const data = await response.text();
   const table = data.split(/\n/).slice(1);
   table.forEach((row) => {
     const columns = row.split(",");
     const year = columns[0];
-    xlabels.push(year);
+    xs.push(year);
     const temp = columns[1];
-    ytemps.push(parseFloat(temp) + 14);
+    ys.push(parseFloat(temp) + 14);
     console.log(year, temp);
   });
+  return { xs, ys };
 };
 
 const chartIt = async () => {
-  await getData();
+  const data = await getData();
   const ctx = document.getElementById("myChart").getContext("2d");
   Chart.defaults.font.size = 14;
   const myChart = new Chart(ctx, {
     type: "line",
     data: {
-      labels: xlabels,
+      labels: data.xs,
       datasets: [
         {
-          label: "Global Average Temperature",
-          data: ytemps,
+          label:
+            "Combined Land-Surface Air and Sea-Surface Water Temperature in °C",
+          data: data.ys,
           backgroundColor: "lightgrey",
           borderColor: "black",
           borderWidth: 1,
