@@ -10,7 +10,6 @@ const getData = async () => {
     xs.push(year);
     const temp = columns[1];
     ys.push(parseFloat(temp) + 14);
-    console.log(year, temp);
   });
   return { xs, ys };
 };

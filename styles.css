@@ -9,11 +9,11 @@
 
 .chart-box {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  height: 500px;
-  width: 1000px;
+  height: 800px;
+  width: 1200px;
 }
 
 #myChart {
-  height: 500px;
-  width: auto;
+  height: 800px;
+  width: 1200px;
 }
